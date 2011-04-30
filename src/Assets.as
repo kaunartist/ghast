@@ -34,7 +34,7 @@ package
 		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
 		
 		//player
-		[Embed(source = '../assets/graphics/player.png')] public static const PLAYER:Class;
+		[Embed(source = '../assets/graphics/son.png')] public static const PLAYER:Class;
 		
 	}
 
