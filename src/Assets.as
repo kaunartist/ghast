@@ -8,10 +8,10 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/Level1.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
-		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
+		[Embed(source = '../assets/levels/runtest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
+//		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
 		
-		public static const LEVELS:Array = new Array(LEVEL1, LEVEL2);
+		public static const LEVELS:Array = new Array(LEVEL1);
 		
 		//tilesets
 		[Embed(source = '../assets/graphics/tileset.png')] public static const TILESET:Class;
@@ -34,7 +34,7 @@ package
 		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
 		
 		//player
-		[Embed(source = '../assets/graphics/son.png')] public static const PLAYER:Class;
+		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;
 		
 	}
 

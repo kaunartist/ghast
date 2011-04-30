@@ -44,6 +44,8 @@ package Objects
 			sprite.add("standRight", [8, 8, 8, 8, 8, 8, 8, 8, 8, 20, 21, 20, 8, 8, 8], 0.2, true);
 			sprite.add("walkLeft", [0, 1, 2, 3, 4, 5, 6, 7], 0.2, true);
 			sprite.add("walkRight", [8, 9, 10, 11, 12, 13, 14, 15], 0.2, true);
+			sprite.add("crouchLeft", [22], 0, false);
+			sprite.add("crouchRight", [23], 0, false);
 			
 			sprite.add("jumpLeft", [2], 0, false);
 			sprite.add("jumpRight", [10], 0, false);
@@ -108,19 +110,25 @@ package Objects
 				} */
 			}
 			
-			if (onground || Input.pressed(Global.keyUp))
-			{
-				// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
-				if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
-				if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
+			if (!Input.check(Global.keyDown))
+			{ // only move if not crouching
+				if (onground || Input.pressed(Global.keyUp))
+				{
+					// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
+					if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
+					if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
+				}
+				else
+				{
+					// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
+					if (Input.check(Global.keyLeft) && speed.x >= 0) { acceleration.x = - movement/10; direction = false; }
+					if (Input.check(Global.keyRight) && speed.x <= 0) { acceleration.x = movement/10; direction = true; }
+				}
 			}
 			else
 			{
-				// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
-				if (Input.check(Global.keyLeft) && speed.x >= 0) { acceleration.x = - movement/10; direction = false; }
-				if (Input.check(Global.keyRight) && speed.x <= 0) { acceleration.x = movement/10; direction = true; }
+				acceleration.x = 0;
 			}
-			
 			//set the gravity
 			gravity();
 			
@@ -138,11 +146,18 @@ package Objects
 			//set the sprites according to if we're on the ground, and if we are moving or not
 			if (onground)
 			{
-				if (speed.x < 0) { sprite.play("walkLeft"); }
-				if (speed.x > 0) { sprite.play("walkRight"); }
-				
-				if (speed.x == 0) {
-					if (direction) { sprite.play("standRight"); } else { sprite.play("standLeft"); }
+				if (Input.check(Global.keyDown))
+				{
+					if (direction) { sprite.play("crouchRight"); } else { sprite.play("crouchLeft"); }
+				}
+				else
+				{
+					if (speed.x < 0) { sprite.play("walkLeft"); }
+					if (speed.x > 0) { sprite.play("walkRight"); }
+					
+					if (speed.x == 0) {
+						if (direction) { sprite.play("standRight"); } else { sprite.play("standLeft"); }
+					}
 				}
 			} else {
 				if (direction) { sprite.play("jumpRight"); } else { sprite.play("jumpLeft"); }
@@ -154,8 +169,14 @@ package Objects
 			
 			
 			//set the motion. We set this later so it stops all movement if we should be stopped
-			motion();
-			
+			if (Input.check(Global.keyDown))
+			{
+				motion(false);
+			}
+			else
+			{
+				motion();
+			}
 			//did we just get.. KILLED? D:
 			if (collide("Spikes", x, y) && speed.y > 0)
 			{
