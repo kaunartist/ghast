@@ -36,12 +36,12 @@ package Objects
 			
 			//set different speeds and such
 			mGravity = 0.4;
-			mMaxspeed = new Point(2.5, 5);
+			mMaxspeed = new Point(2, 5);
 			mFriction = new Point(0.6, 0.8);
 			
 			//set up animations
-			sprite.add("standLeft", [0], 0, false);
-			sprite.add("standRight", [8], 0, false);
+			sprite.add("standLeft", [0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 19, 18, 0, 0, 0], 0.2, true);
+			sprite.add("standRight", [8, 8, 8, 8, 8, 8, 8, 8, 8, 20, 21, 20, 8, 8, 8], 0.2, true);
 			sprite.add("walkLeft", [0, 1, 2, 3, 4, 5, 6, 7], 0.2, true);
 			sprite.add("walkRight", [8, 9, 10, 11, 12, 13, 14, 15], 0.2, true);
 			
