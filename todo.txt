@@ -34,8 +34,12 @@ Assets (* = do first, others are extra)
     - Death screen
     - Victory screen
 
-  Audio
+  Audio - do this when i'm too tired/drunk to code
     - Aura/spirit collision
+    - Player movement
+      - Walk
+      - Jump
+      - Crouch
     - Spirit movement (eg. ghast lunges, makes whooshing noise)
     - Ambient spirit noises (so that the more there are, the more you can hear them)
       - Bat
