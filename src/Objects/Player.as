@@ -25,11 +25,6 @@ package Objects
 		//are we on the ground?
 		public var onground:Boolean = false;
 		
-		//are we walljumping? (0 = no, 1 = left, 2 = right)
-		public var walljumping:int = 0;
-		//can we double jump? (false = no, true = yes)
-		public var doublejump:Boolean = false;
-		
 		public var dead:Boolean = false;
 		public var start:Point;
 		
@@ -41,8 +36,8 @@ package Objects
 			
 			//set different speeds and such
 			mGravity = 0.4;
-			mMaxspeed = new Point(4, 8);
-			mFriction = new Point(0.5, 0.5);
+			mMaxspeed = new Point(2.5, 5);
+			mFriction = new Point(0.6, 0.8);
 			
 			//set up animations
 			sprite.add("standLeft", [0], 0, false);
@@ -74,24 +69,24 @@ package Objects
 			if (collide(solid, x, y + 1)) 
 			{ 
 				onground = true;
-				walljumping = 0;
-				doublejump = true;
 			}
 			
 			//set acceleration to nothing
 			acceleration.x = 0;
 			
-			//increase acceeration, if we're not going too fast
-			if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
-			if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
+
 			
 			//friction (apply if we're not moving, or if our speed.x is larger than maxspeed)
 			if ( (! Input.check(Global.keyLeft) && ! Input.check(Global.keyRight)) || Math.abs(speed.x) > mMaxspeed.x ) { friction(true, false); }
 			
 			//jump
-			if ( Input.pressed(Global.keyA) ) 
+			if ( Input.pressed(Global.keyUp) ) 
 			{
 				var jumped:Boolean = false;
+				
+				//increase acceeration, if we're not going too fast
+//				if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
+//				if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
 				
 				//normal jump
 				if (onground) { 
@@ -99,42 +94,32 @@ package Objects
 					jumped = true; 
 				}
 				
-				//wall jump
-				if (collide(solid, x - 1, y) && !jumped && walljumping != 3) 
-				{ 
-					speed.y = -jump;			//jump up
-					speed.x = mMaxspeed.x * 2;	//move right fast
-					walljumping = 2;			//and set wall jump direction
-					jumped = true;				//so we don't "use up" or double jump
-				}
-				//same as above
-				if (collide(solid, x + 1, y) && !jumped && walljumping != 3) 
+/*				//same as above
+				if (collide(solid, x + 1, y) && !jumped) 
 				{ 
 					speed.y = -jump; 
 					speed.x = - mMaxspeed.x * 2;
-					walljumping = 1;
 					jumped = true;
 				}
 				
 				//set double jump to false
-				if (!onground && !jumped && doublejump) { 
+				if (!onground && !jumped) { 
 					speed.y = -jump;
-					doublejump = false;
-					//set walljumping to 0 so we can move back in any direction again
-					//incase we were wall jumping prior to this double jump.
-					//if you don't want to allow walljumping after a double jump, set this to 3.
-					walljumping = 0;
-				} 
+				} */
 			}
 			
-			
-			//REMOVED AS OF V0.90 - Felt bad with this in here
-			//if we ARE walljumping, make sure we can't go back
-			/*if (walljumping > 0)
+			if (onground || Input.pressed(Global.keyUp))
 			{
-				if (walljumping == 2 && speed.x < 0) { speed.x = 0; }
-				if (walljumping == 1 && speed.x > 0) { speed.x = 0; }
-			}*/
+				// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
+				if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
+				if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
+			}
+			else
+			{
+				// only allow horizontal movement if we are on the ground - you can't randomly change direction in mid-air!
+				if (Input.check(Global.keyLeft) && speed.x >= 0) { acceleration.x = - movement/10; direction = false; }
+				if (Input.check(Global.keyRight) && speed.x <= 0) { acceleration.x = movement/10; direction = true; }
+			}
 			
 			//set the gravity
 			gravity();
@@ -146,8 +131,8 @@ package Objects
 			//than the max speed, descrease it with friction slowly.
 			maxspeed(false, true);
 			
-			//variable jumping (tripple gravity)
-			if (speed.y < 0 && !Input.check(Global.keyA)) { gravity(); gravity(); }
+			//variable jumping (triple gravity)
+			if (speed.y < 0 && !Input.check(Global.keyUp)) { gravity(); gravity(); }
 			
 			
 			//set the sprites according to if we're on the ground, and if we are moving or not

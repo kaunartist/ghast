@@ -50,12 +50,13 @@ Assets (* = do first, others are extra)
 
 Programming
 - Player controls
-  - A: walk left
-  - D: walk right
-  - W: jump
+  x A: walk left
+  x D: walk right
+  x W: jump
   - S: duck (aka. cower in fear)
-- Environment interaction (use APE)
-- Screen camera to follow player through map
+x Environment interaction (use APE)
+- Add ledge grabbing/climbing
+x Screen camera to follow player through map
 - Save points: skip intro dialog, save at oases.
 - Aura effects
   - Passive hits (collision between particle and spirit triggers spirit's flee state)
