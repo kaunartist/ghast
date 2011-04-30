@@ -1,7 +1,7 @@
 Assets (* = do first, others are extra)
   Sprites
     * Player
-      - walk cycle
+      x walk cycle
       - death animation (turn into ghast?)
     - Player's father
     - Bat spirit
@@ -15,6 +15,7 @@ Assets (* = do first, others are extra)
     - Environment elements
       - Falling leaves
       - frogs hopping around
+    - Fairy ring teleportation
 
   Level
     * Your house
@@ -46,6 +47,7 @@ Assets (* = do first, others are extra)
       - Near-death
       - Dead
     - Waterfall
+    - Fairy ring teleport noise
     - Unicorn noises?
 
 Programming
@@ -53,9 +55,10 @@ Programming
   x A: walk left
   x D: walk right
   x W: jump
-  - S: duck (aka. cower in fear)
+  x S: duck (aka. cower in fear)
+  - Space: use ring (aura surge)
 x Environment interaction (use APE)
-- Add ledge grabbing/climbing
+- Add ledge grabbing/climbing?
 x Screen camera to follow player through map
 - Save points: skip intro dialog, save at oases.
 - Aura effects
