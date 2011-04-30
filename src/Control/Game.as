@@ -112,25 +112,6 @@ package Control
 			//place a crate
 			for each (o in xml.objects[0].crate) { add(new Crate(o.@x, o.@y)); }
 			
-			//place a moving platform
-			for each (o in xml.objects[0].moving) { add(new Moving(o.@x, o.@y)); }
-			
-			//place a moving platform
-			for each (o in xml.objects[0].spikes) { add(new Spikes(o.@x, o.@y)); }
-			
-			//place electricity
-			for each (o in xml.objects[0].electricity) {
-				var p:Point;
-				//get the end point of the electricity (via nodes)
-				for each (n in o.node)
-				{
-					p = new Point(n.@x, n.@y);
-				}
-				
-				//add electricity to the world
-				add(new Electricity(o.@x, o.@y, p.x, p.y));
-			}
-			
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
 		}

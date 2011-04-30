@@ -33,25 +33,6 @@
   </slopes>
   <objects>
     <crate x="96" y="288"/>
-    <moving x="352" y="224"/>
-    <spikes x="256" y="480"/>
-    <spikes x="288" y="480"/>
-    <spikes x="352" y="480"/>
-    <spikes x="320" y="480"/>
-    <spikes x="384" y="480"/>
-    <spikes x="416" y="480"/>
-    <spikes x="448" y="480"/>
-    <spikes x="480" y="480"/>
-    <spikes x="32" y="480"/>
-    <electricity x="608" y="128">
-      <node x="608" y="448"/>
-    </electricity>
-    <electricity x="608" y="448">
-      <node x="800" y="256"/>
-    </electricity>
-    <electricity x="800" y="256">
-      <node x="992" y="448"/>
-    </electricity>
     <crate x="800" y="320"/>
     <player x="96" y="256"/>
     <door x="1184" y="384"/>

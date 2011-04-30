@@ -37,9 +37,6 @@
 			</object>
 		</folder>
 		<object name="crate" image="crate.png" width="32" height="32" />
-		<object name="moving" image="moving.png" width="64" height="32" />
-		<object name="spikes" image="spikes.png" width="32" height="32" />
-		<object name="electricity" image="electricity.png" width="32" height="32">
 			<nodes drawObject="true" limit="1" lineMode="1"/>
 		</object>
 		<object name="door" image="door.png" width="32" height="32" />
