@@ -36,7 +36,7 @@
 				</values>
 			</object>
 		</folder>
-		<object name="crate" image="crate.png" width="32" height="32" />
+		<object name="crate" image="crate.png" width="32" height="32">
 			<nodes drawObject="true" limit="1" lineMode="1"/>
 		</object>
 		<object name="door" image="door.png" width="32" height="32" />
@@ -47,7 +47,6 @@
 		<grid name="floors" gridSize="32" exportAsObjects="true"/>
 		<objects name="slopes" gridSize="32"/>
 		<objects name="objects" gridSize="32"/>
-		<tiles name="tilesAbove" gridSize="32" />
-		
+		<tiles name="tilesAbove" gridSize="32"/>	
 	</layers>
 </project>
