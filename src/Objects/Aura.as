@@ -43,7 +43,7 @@ package Objects
 				{
 					e.banish();
 				}
-				else if (!e.fleeing)
+				else if (e.state.state != "flee")
 				{
 					Global.energy -= 1 * energy_modifier;
 					trace("Energy: " + Global.energy);

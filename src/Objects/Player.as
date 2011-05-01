@@ -29,8 +29,6 @@ package Objects
 		
 		public var dead:Boolean = false;
 		public var start:Point;
-		public var aura_energy:uint;
-		public var health:uint;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -42,10 +40,6 @@ package Objects
 			mGravity = 0.4;
 			mMaxspeed = new Point(2, 5);
 			mFriction = new Point(0.6, 0.8);
-			
-			//set game variables
-			health = 3; // move these to global?
-			aura_energy = 100;
 			
 			//set up animations
 			sprite.add("standLeft", [0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 19, 18, 0, 0, 0], 0.2, true);
