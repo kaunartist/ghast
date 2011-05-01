@@ -85,6 +85,7 @@ package Control
 			
 			//add the view, and the player
 			add(Global.player = new Player(xml.objects[0].player.@x, xml.objects[0].player.@y));
+			add(Global.aura = new Aura(xml.objects[0].player.@x, xml.objects[0].player.@y));
 			
 			//set the view to follow the player, within no restraints, and let it "stray" from the player a bit.
 			//for example, if the last parameter was 1, the view would be static with the player. If it was 10, then

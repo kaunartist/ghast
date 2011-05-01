@@ -1,22 +1,19 @@
 package Objects 
-{
-	import flash.geom.Point;
-	import net.flashpunk.Entity;
+{	
 	import flash.display.BitmapData;
+	import flash.geom.Point;
+	
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
-	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
-	import net.flashpunk.utils.Ease;
-	import net.flashpunk.graphics.Emitter;
+	
 	import Assets;
 	import Global;
 	
 	public class Player extends Physics
 	{
-		
-		
 		public var sprite:Spritemap = new Spritemap(Assets.PLAYER, 32, 32, animEnd);
 		
 		//how fast we accelerate
@@ -31,9 +28,8 @@ package Objects
 		
 		public var dead:Boolean = false;
 		public var start:Point;
-		public var aura:Emitter;
-		protected const AURA_MAX:uint = 50;
-		public var aura_count:uint;
+		public var aura_energy:uint;
+		public var health:uint;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -45,6 +41,10 @@ package Objects
 			mGravity = 0.4;
 			mMaxspeed = new Point(2, 5);
 			mFriction = new Point(0.6, 0.8);
+			
+			//set game variables
+			health = 3;
+			aura_energy = 100;
 			
 			//set up animations
 			sprite.add("standLeft", [0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 19, 18, 0, 0, 0], 0.2, true);
@@ -64,8 +64,7 @@ package Objects
 			
 			//set hitbox & graphic
 			setHitbox(12, 24, -10, -8);
-			initialize_aura();
-			graphic = new Graphiclist(aura, sprite);
+			graphic = sprite;
 			type = "Player";
 		}
 		
@@ -73,11 +72,7 @@ package Objects
 		{
 			//did we... die?
 			if (dead) { sprite.alpha -= 0.1; return; } else if ( sprite.alpha < 1 ) { sprite.alpha += 0.1 }
-			else
-			{
-				emit_aura();
-			}
-			
+
 			//are we on the ground?
 			onground = false;
 			if (collide(solid, x, y + 1)) 
@@ -190,29 +185,6 @@ package Objects
 		}
 		
 		public function animEnd():void { }
-		
-		private function initialize_aura():void
-		{
-			aura_count = AURA_MAX;
-			aura = new Emitter(new BitmapData(2,2), 2, 2);
-			aura.relative = false;
-			aura.newType("exhaust",[0]);
-			aura.setAlpha("exhaust",1,0);
-			aura.setMotion("exhaust", 0, 35, 40, 360, 0, 0);
-			aura.setColor("exhaust", 0x66EEFF, 0x9922FF);
-		}
-		
-		private function emit_aura():void
-		{
-			for (var i:uint = 0; i < aura.particleCount; i++)
-			{
-				
-			}
-			for (i = aura.particleCount; i < aura_count; i++)
-			{
-				aura.emit("exhaust", x + width/2 + 12, y + height/2 + 4);
-			}
-		}
 	}
 
 }

@@ -32,6 +32,8 @@ package
 		[Embed(source = '../assets/graphics/electricity.png')] public static const OBJECT_ELECTRICITY:Class;
 		[Embed(source = '../assets/graphics/moving.png')] public static const OBJECT_MOVING:Class;
 		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
+		[Embed(source = '../assets/graphics/aura.png')] public static const AURA:Class;
+		[Embed(source = '../assets/graphics/aura_mask.png')] public static const AURA_MASK:Class;
 		
 		//player
 		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;

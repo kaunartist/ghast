@@ -1,8 +1,12 @@
 package
 {
-	import net.flashpunk.utils.Key;
-	import Objects.Player;
 	import Control.View;
+	
+	import Objects.Aura;
+	import Objects.Player;
+	
+	import net.flashpunk.utils.Key;
+
 	/*
 	 * This class contains a number of global variables to be used throughout the game
 	 */
@@ -27,6 +31,7 @@ package
 			keyA:int = Key.X,
 			
 			player:Player,
+			aura:Aura,
 			view:View,
 			
 			paused:Boolean = false,
