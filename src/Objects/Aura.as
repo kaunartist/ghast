@@ -59,6 +59,8 @@ package Objects
 		
 		public function surge_end():void
 		{
+			surging = false;
+			energy_modifier = 1;
 			sprite.play("pulse");
 		}
 	}
