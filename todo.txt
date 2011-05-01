@@ -7,6 +7,7 @@ Assets (* = do first, others are extra)
     - Bat spirit
     * Ghast spirit
     - Climber spirit
+    - Ring energy level indicator
     - Timer logo (sun/moon moving?). Can just be a timer countdown as placeholder.
     - Oasis
       - pool of water
@@ -25,11 +26,11 @@ Assets (* = do first, others are extra)
     - Forest segment 2
     - Oasis 2
     - Forest segment 3
-    - Arima's house
+    * Arima's house
 
   Other
     - Background (auto-gen?)
-    * Aura: can this be a particle engine?
+    * Aura: mimic a particle engine
     - Title screen
     - Death screen
     - Victory screen
@@ -55,12 +56,12 @@ Assets (* = do first, others are extra)
     - Unicorn noises?
 
 Programming
-- Player controls
+* Player controls
   x A: walk left
   x D: walk right
   x W: jump
   x S: duck (aka. cower in fear)
-  - Space: use ring (aura surge)
+  x Space: use ring (aura surge)
 x Environment interaction (use APE)
 - Add ledge grabbing/climbing?
 x Screen camera to follow player through map
@@ -68,10 +69,13 @@ x Screen camera to follow player through map
 - Aura effects
   - Passive hits (collision between particle and spirit triggers spirit's flee state)
   - Surge (press space to surge aura and banish spirits)
-  - Recharge (press space to pet unicorn and recharge ring)
+  - Recharge (stand under waterfall to recharge ring)
 - Spirit movement/AI
-  - Bat: bird flocking
-  - Ghast: wander, hunt player when noticed
+  - All: flee, hunt
+  - Bat: bird flocking/random flying
+  * Ghast: wander, hunt player when noticed
+  	- Line of sight detection
+  	- Swooping attack along somewhat random path to avoid predictability
   - Climber: jump around, clinging to surfaces
 - Dialog
 
@@ -84,7 +88,7 @@ Father: "I know you can, but...it's dangerous to go alone. Take this!"
 
 * gives ring of protection *
 
-Father: "This is the ring of protection I forged when my master deemed me ready, so many years ago. I've poured energy into it every day, but if you're not careful the spirits outside will drain it quickly. If you're in extreme danger, <press space> to hurt the spirits. Be warned - there's too many of them for you to get through the forest that way. Now, go. Once night falls, you'll have no chance."
+Father: "This is the ring of protection I forged when my master deemed me ready, so many years ago. I've poured energy into it every day, but if you're not careful, the spirits outside will drain it quickly. If you're in extreme danger, <press space> to hurt the spirits. Be warned - there's too many of them for you to get through the forest that way. Now, go. Once night falls, you'll have no chance."
 
 Son: "Goodbye, Father."
 Father: "Goodbye, my dear son."
