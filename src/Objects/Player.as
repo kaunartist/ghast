@@ -43,7 +43,7 @@ package Objects
 			mFriction = new Point(0.6, 0.8);
 			
 			//set game variables
-			health = 3;
+			health = 3; // move these to global?
 			aura_energy = 100;
 			
 			//set up animations
