@@ -12,8 +12,10 @@ package Objects
 		
 		public function Spirit(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null)
 		{
-			sprite.add("hover", [0, 1, 2, 1], 0.15, true);
+			sprite.add("hover", [0, 1, 2, 3, 4, 5], 0.1, true);
+			sprite.add("glide", [0, 8, 9, 10, 10, 9, 9, 8], 0.1, true);
 			sprite.play("hover");
+			sprite.alpha = 0.7;
 			fleeing = false;
 			dead = false;
 			
@@ -28,11 +30,16 @@ package Objects
 		{
 			if (sprite.alpha <= 0) { visible = false; active = false; }
 			if (dead) { sprite.alpha -= 0.1; return; }
+			if (fleeing)
+			{
+				x -= 1;
+			}
 		}
 		
 		public function flee():void
 		{
 			fleeing = true;
+			sprite.play("glide");
 			trace("Run!");
 		}
 		

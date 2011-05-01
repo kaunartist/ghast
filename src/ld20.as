@@ -15,6 +15,7 @@ package
 		{
 			//load up the new world
 			FP.world = new Menu();
+			FP.screen.color = 0x584d44;
 		}
 	}
 }
