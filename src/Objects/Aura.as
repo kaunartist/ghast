@@ -9,20 +9,22 @@ package Objects
 	
 	public class Aura extends Entity
 	{
-		public var sprite:Spritemap = new Spritemap(Assets.AURA, 48, 48);
+		public var sprite:Spritemap = new Spritemap(Assets.AURA, 64, 64);
 		public var energy_modifier:uint;
 		public var surging:Boolean;
 
 		public function Aura(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null)
 		{
-			sprite.add("pulse", [2, 1, 0, 1], 0.2, true);
-			sprite.add("surge", [1, 0], 0.2, true);
+			sprite.add("pulse", [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 14, 13, 12, 11, 10, 9, 8], 0.2, true);
+			sprite.add("surge", [14, 15], 0.2, true);
 			sprite.play("pulse");
-			
+			sprite.originX = 32;
+			sprite.originY = 32;
+			trace("Origin: " + sprite.originX + ", " + sprite.originY);
 			setHitbox(48, 48, 0, 0);
 			graphic = sprite;
 			super(x, y, graphic, mask);
-			
+
 			energy_modifier = 1;
 			surging = false;
 			type = "Aura";
@@ -30,7 +32,9 @@ package Objects
 		
 		override public function update():void
 		{
-			this.moveTo(Global.player.x - 8, Global.player.y - 4);
+			sprite.angle++;
+			sprite.angle = sprite.angle % 360;
+			this.moveTo(Global.player.x - 17, Global.player.y - 12);
 			var e:Spirit;
 			if (e = Spirit(collide("Spirit", x, y)))
 			{

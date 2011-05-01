@@ -87,9 +87,9 @@ package Control
 			//add the tileset to the world
 			add(new Entity(0, 0, tileset = new Tilemap(Assets.TILESET, FP.width, FP.height, Global.grid, Global.grid)));
 			
-			//add the view, and the player
-			add(Global.player = new Player(xml.objects[0].player.@x, xml.objects[0].player.@y));
+			//add the view, and the player			
 			add(Global.aura = new Aura(xml.objects[0].player.@x, xml.objects[0].player.@y));
+			add(Global.player = new Player(xml.objects[0].player.@x, xml.objects[0].player.@y));
 			
 			//add the spirits
 			Global.spirits = new Vector.<Spirit>();
