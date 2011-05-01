@@ -10,6 +10,8 @@ package Objects
 	public class Aura extends Entity
 	{
 		public var sprite:Spritemap = new Spritemap(Assets.AURA, 48, 48);
+		public var energy_modifier:uint;
+		public var surging:Boolean;
 
 		public function Aura(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null)
 		{
@@ -21,6 +23,8 @@ package Objects
 			graphic = sprite;
 			super(x, y, graphic, mask);
 			
+			energy_modifier = 1;
+			surging = false;
 			type = "Aura";
 		}
 		
@@ -30,8 +34,14 @@ package Objects
 			var e:Spirit;
 			if (e = Spirit(collide("Spirit", x, y)))
 			{
-				if (!e.fleeing)
+				if (surging)
 				{
+					e.banish();
+				}
+				else if (!e.fleeing)
+				{
+					Global.energy -= 1 * energy_modifier;
+					trace("Energy: " + Global.energy);
 					e.flee();
 				}
 			}
@@ -41,6 +51,10 @@ package Objects
 		public function surge():void
 		{
 			sprite.play("surge");
+			Global.energy -= 10;
+			energy_modifier = 2;
+			surging = true;
+			trace("Energy: " + Global.energy);
 		}
 		
 		public function surge_end():void

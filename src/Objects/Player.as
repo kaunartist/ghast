@@ -179,7 +179,7 @@ package Objects
 				motion();
 			}
 			//did we just get.. KILLED? D:
-			if (collide("Spikes", x, y) && speed.y > 0)
+			if ((Global.health <= 0) || (Global.energy <= 0))
 			{
 				//killme!
 				killme();
