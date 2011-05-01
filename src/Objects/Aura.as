@@ -16,20 +16,26 @@ package Objects
 			sprite.add("pulse", [2, 1, 0, 1], 0.2, true);
 			sprite.add("surge", [1, 0], 0.2, true);
 			sprite.play("pulse");
+			
+			setHitbox(48, 48, 0, 0);
 			graphic = sprite;
-//			mask = new Pixelmask(Assets.AURA_MASK);
-			type = "Aura";
 			super(x, y, graphic, mask);
+			
+			type = "Aura";
 		}
 		
 		override public function update():void
 		{
 			this.moveTo(Global.player.x - 8, Global.player.y - 4);
-			if (collide("Spirit", x, y))
+			var e:Spirit;
+			if (e = Spirit(collide("Spirit", x, y)))
 			{
-				trace("HIT");
+				if (!e.fleeing)
+				{
+					e.flee();
+				}
 			}
-//			super.update();
+			super.update();
 		}
 		
 		public function surge():void
