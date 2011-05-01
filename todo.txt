@@ -29,7 +29,7 @@ Assets (* = do first, others are extra)
 
   Other
     - Background (auto-gen?)
-    * Aura: mimic a particle engine
+    x Aura: mimic a particle engine
     x Title screen
     - Death screen
     - Victory screen
@@ -43,7 +43,7 @@ Assets (* = do first, others are extra)
     - Spirit movement (eg. ghast lunges, makes whooshing noise)
       * Ghast (prowl?)
     - Soundtrack
-      * Main
+      x Main
       - Oasis
     - Waterfall
 

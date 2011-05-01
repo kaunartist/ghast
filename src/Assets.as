@@ -37,6 +37,9 @@ package
 //		[Embed(source = '../assets/graphics/aura_mask.png')] public static const AURA_MASK:Class;
 		[Embed(source = '../assets/graphics/ghast3.png')] public static const GHAST:Class;
 		
+		//sounds
+		[Embed(source = '../assets/audio/soundtrack.swf#soundtrack')] public static const SOUNDTRACK:Class;
+		
 		//player
 		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;
 		

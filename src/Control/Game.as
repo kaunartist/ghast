@@ -14,8 +14,10 @@ package Control
 	
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.World;
 	import net.flashpunk.graphics.Tilemap;
+
 	/**
 	 * ...
 	 * @author Noel Berry
@@ -31,7 +33,7 @@ package Control
 		override public function begin():void
 		{
 			//enable the console
-			FP.console.enable();
+//			FP.console.enable();
 			
 			//set the level to 0
 			Global.level = 0;
@@ -130,6 +132,10 @@ package Control
 			
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
+			
+			//set the music
+			Global.soundtrack = new Sfx(Assets.SOUNDTRACK);
+			Global.soundtrack.loop(0.5);
 		}
 		
 		

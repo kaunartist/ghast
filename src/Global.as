@@ -6,6 +6,7 @@ package
 	import Objects.Player;
 	import Objects.Spirit;
 	
+	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Key;
 
 	/*
@@ -25,6 +26,8 @@ package
 			
 			musicon:Boolean = true,
 			soundon:Boolean = true,
+			
+			soundtrack:Sfx,
 			
 			keyUp:int = Key.UP,
 			keyDown:int = Key.DOWN,
