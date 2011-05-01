@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="320" height="240" framerate="12">
+<background color="#ffffff" />
+<frame>
+<library>
+  <sound id="walk" import="sfx/walk_full.wav" />
+</library>
+
+<!-- init -->
+<DoAction>
+<actions>
+<PushData>
+<items>
+<StackString value="soundplay"/>
+<StackInteger value="0"/>
+<StackString value="Sound"/>
+</items>
+</PushData>
+<New/>
+<SetVariable/>
+</actions>
+</DoAction>
+
+<!-- attach -->
+<DoAction>
+<actions>
+<PushData>
+<items>
+<StackString value="importedsound" />
+<StackInteger value="1" />
+<StackString value="soundplay" />
+</items>
+</PushData>
+<GetVariable />
+<PushData>
+<items>
+<StackString value="attachSound" />
+</items>
+</PushData>
+<CallMethod />
+<Pop />
+</actions>
+</DoAction>
+
+<!-- play -->
+<DoAction>
+<actions>
+<PushData>
+<items>
+<StackInteger value="0" />
+<StackString value="soundplay" />
+</items>
+</PushData>
+<GetVariable />
+<PushData>
+<items>
+<StackString value="start" />
+</items>
+</PushData>
+<CallMethod />
+<Pop />
+</actions>
+</DoAction>
+</frame>
+</movie>
