@@ -121,12 +121,7 @@ package Control
 				//place flat solids, setting their position & width/height
 				add(new Solid(o.@x, o.@y, o.@w, o.@h));
 			}
-			if(str.search("<slopes>") > 0) {
-				for each (o in xml.slopes[0].slope) {
-					//place a slope
-					add(new Slope(o.@x, o.@y, o.@type));
-				}
-			}
+
 			//place a crate
 			for each (o in xml.objects[0].crate) { add(new Crate(o.@x, o.@y)); }
 			
@@ -134,7 +129,7 @@ package Control
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
 			
 			//set the music
-			Global.soundtrack = new Sfx(Assets.SOUNDTRACK);
+			Global.soundtrack = new Sfx(Assets.SFX_SOUNDTRACK);
 			Global.soundtrack.loop(0.5);
 		}
 		
@@ -160,6 +155,7 @@ package Control
 		 */
 		public function restartlevel():void
 		{
+			Global.soundtrack.stop();
 			removeAll();
 			loadlevel();
 			

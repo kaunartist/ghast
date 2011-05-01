@@ -4,17 +4,18 @@ package Objects
 	import flash.geom.Point;
 	
 	import net.flashpunk.Entity;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
-	
 	import Assets;
 	import Global;
 	
 	public class Player extends Physics
 	{
 		public var sprite:Spritemap = new Spritemap(Assets.PLAYER, 32, 32, animEnd);
+//		public var sfx_walk:Sfx = new Sfx(Assets.SFX_WALK);
 		
 		//how fast we accelerate
 		public var movement:Number = 1;

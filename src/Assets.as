@@ -8,7 +8,7 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/ghasttest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
+		[Embed(source = '../assets/levels/forest1.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
 //		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
 		
 		public static const LEVELS:Array = new Array(LEVEL1);
@@ -38,7 +38,8 @@ package
 		[Embed(source = '../assets/graphics/ghast3.png')] public static const GHAST:Class;
 		
 		//sounds
-		[Embed(source = '../assets/audio/soundtrack.swf#soundtrack')] public static const SOUNDTRACK:Class;
+		[Embed(source = '../assets/audio/soundtrack.swf#soundtrack')] public static const SFX_SOUNDTRACK:Class;
+//		[Embed(source = '../assets/audio/walk.swf#walk')] public static const SFX_WALK:Class;
 		
 		//player
 		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;
