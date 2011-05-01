@@ -28,7 +28,7 @@ package
 			keyDown:int = Key.DOWN,
 			keyLeft:int = Key.LEFT,
 			keyRight:int = Key.RIGHT,
-			keyA:int = Key.X,
+			keyA:int = Key.SPACE,
 			
 			player:Player,
 			aura:Aura,

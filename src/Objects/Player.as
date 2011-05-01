@@ -87,7 +87,7 @@ package Objects
 			if ( (! Input.check(Global.keyLeft) && ! Input.check(Global.keyRight)) || Math.abs(speed.x) > mMaxspeed.x ) { friction(true, false); }
 			
 			//jump
-			if ( Input.pressed(Global.keyUp) ) 
+			if ( Input.pressed(Global.keyUp) && !Input.check(Global.keyA)) 
 			{
 				var jumped:Boolean = false;
 				
@@ -102,7 +102,16 @@ package Objects
 				}
 			}
 			
-			if (!Input.check(Global.keyDown))
+			if ( Input.pressed(Global.keyA) && onground && (speed.x == 0))
+			{
+				Global.aura.surge();
+			}
+			else if ( Input.released(Global.keyA) )
+			{
+				Global.aura.surge_end();
+			}
+			
+			if (!Input.check(Global.keyDown) && !Input.check(Global.keyA))
 			{ // only move if not crouching
 				if (onground || Input.pressed(Global.keyUp))
 				{

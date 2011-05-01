@@ -9,11 +9,11 @@ package Objects
 	
 	public class Aura extends Entity
 	{
-		public var sprite:Spritemap = new Spritemap(Assets.AURA, 32, 32);
+		public var sprite:Spritemap = new Spritemap(Assets.AURA, 48, 48);
 
 		public function Aura(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null)
 		{
-			sprite.add("pulse", [2, 1, 0, 1, 2], 0.2, true);
+			sprite.add("pulse", [2, 1, 0, 1], 0.2, true);
 			sprite.add("surge", [1, 0], 0.2, true);
 			sprite.play("pulse");
 			graphic = sprite;
@@ -24,7 +24,7 @@ package Objects
 		
 		override public function update():void
 		{
-			this.moveTo(Global.player.x, Global.player.y);
+			this.moveTo(Global.player.x - 8, Global.player.y - 4);
 			if (collide("Spirit", x, y))
 			{
 				trace("HIT");
