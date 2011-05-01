@@ -8,7 +8,7 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/runtest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
+		[Embed(source = '../assets/levels/ghasttest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
 //		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
 		
 		public static const LEVELS:Array = new Array(LEVEL1);
@@ -34,6 +34,7 @@ package
 		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
 		[Embed(source = '../assets/graphics/aura.png')] public static const AURA:Class;
 		[Embed(source = '../assets/graphics/aura_mask.png')] public static const AURA_MASK:Class;
+		[Embed(source = '../assets/graphics/ghast_spirit.png')] public static const GHAST:Class;
 		
 		//player
 		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;

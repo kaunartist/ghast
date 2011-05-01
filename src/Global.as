@@ -4,6 +4,7 @@ package
 	
 	import Objects.Aura;
 	import Objects.Player;
+	import Objects.Spirit;
 	
 	import net.flashpunk.utils.Key;
 
@@ -32,6 +33,7 @@ package
 			
 			player:Player,
 			aura:Aura,
+			spirits:Vector.<Spirit>,
 			view:View,
 			
 			paused:Boolean = false,

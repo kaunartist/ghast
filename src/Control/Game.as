@@ -1,19 +1,21 @@
 package Control
 {
+	import Assets;
+	
+	import Global;
+	
+	import Objects.*;
+	
+	import Solids.*;
+	
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.utils.ByteArray;
-	import Assets;
-	import Global;
 	
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
 	import net.flashpunk.graphics.Tilemap;
-//	import org.flashdevelop.utils.FlashViewer;
-	
-	import Objects.*;
-	import Solids.*;
 	/**
 	 * ...
 	 * @author Noel Berry
@@ -86,6 +88,17 @@ package Control
 			//add the view, and the player
 			add(Global.player = new Player(xml.objects[0].player.@x, xml.objects[0].player.@y));
 			add(Global.aura = new Aura(xml.objects[0].player.@x, xml.objects[0].player.@y));
+			
+			//add the spirits
+			Global.spirits = new Vector.<Spirit>();
+			var s:Spirit;
+			if(str.search("<spirits>") > 0) {
+				for each (o in xml.spirits[0].ghast) {
+					s = new Spirit(o.@x, o.@y);
+					Global.spirits.push(s);
+					add(s);
+				}
+			}
 			
 			//set the view to follow the player, within no restraints, and let it "stray" from the player a bit.
 			//for example, if the last parameter was 1, the view would be static with the player. If it was 10, then

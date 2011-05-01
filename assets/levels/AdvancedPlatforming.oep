@@ -36,6 +36,9 @@
 				</values>
 			</object>
 		</folder>
+		<folder name="spirits">
+			<object name="ghast" image="ghast.png" width="32" height="32" />
+		</folder>
 		<object name="crate" image="crate.png" width="32" height="32">
 			<nodes drawObject="true" limit="1" lineMode="1"/>
 		</object>
@@ -46,6 +49,7 @@
 	<layers>
 		<grid name="floors" gridSize="32" exportAsObjects="true"/>
 		<objects name="slopes" gridSize="32"/>
+		<objects name="spirits" gridSize="32"/>
 		<objects name="objects" gridSize="32"/>
 		<tiles name="tilesAbove" gridSize="32"/>	
 	</layers>
