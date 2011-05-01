@@ -5,8 +5,10 @@ Assets (* = do first, others are extra)
       - death animation (turn into ghast?)
     - Player's father
     * Ghast spirit
-      - move
+      x move
+      x hover
       - swoop
+      - banish
     - Ring energy level indicator
     - Timer logo (sun/moon moving?). Can just be a timer countdown as placeholder.
     - Oasis
@@ -28,7 +30,7 @@ Assets (* = do first, others are extra)
   Other
     - Background (auto-gen?)
     * Aura: mimic a particle engine
-    - Title screen
+    x Title screen
     - Death screen
     - Victory screen
 
@@ -46,7 +48,7 @@ Assets (* = do first, others are extra)
     - Waterfall
 
 Programming
-* Player controls
+x Player controls
   x A: walk left
   x D: walk right
   x W: jump
@@ -65,7 +67,7 @@ x Screen camera to follow player through map
   	- Line of sight detection
   	- Swooping attack along somewhat random path to avoid predictability
 - Dialog
-- Fix restart
+x Fix restart
 
 
 

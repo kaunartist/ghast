@@ -55,6 +55,8 @@ package Control
 					restartlevel();
 					//set restart to false
 					Global.restart = false;
+					Global.energy = 100;
+					Global.health = 3;
 					//reset our timer
 					reset = 60;
 				}

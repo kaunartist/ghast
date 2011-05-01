@@ -16,8 +16,8 @@ package
 		public static var
 			time:int = 0,
 			deaths:int = 0,
-			energy:uint = 100,
-			health:uint = 3,
+			energy:int = 100,
+			health:int = 3,
 			level:int = 0,
 			
 			newgame:Boolean = false,

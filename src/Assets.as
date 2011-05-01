@@ -19,6 +19,7 @@ package
 		//menu
 		[Embed(source = '../assets/graphics/banner.png')] public static const MENU_BANNER:Class;
 		[Embed(source = '../assets/graphics/menu.png')] public static const MENU:Class;
+		[Embed(source = '../assets/graphics/mchnzd.png')] public static const MCHNZD:Class;
 		
 		//slopes
 		[Embed(source = '../assets/graphics/slope1.png')] public static const SLOPE1:Class;

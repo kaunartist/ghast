@@ -21,6 +21,7 @@ package Control
 	{
 		//add the banner as an image
 		public var sprBanner:Image = new Image(Assets.MENU_BANNER);
+		public var sprMCHNZD:Image = new Image(Assets.MCHNZD);
 		
 		//add each menu option from the menu.png
 		public var sprNewGame:Image = new Image(Assets.MENU, new Rectangle(0, 0, 640, 64));
@@ -29,7 +30,7 @@ package Control
 		public var sprLoadGameHover:Image = new Image(Assets.MENU,new Rectangle(0,192,640,64));
 		
 		//create a new graphic list of our images
-		public var sprites:Graphiclist = new Graphiclist(sprBanner, sprNewGame, sprNewGameHover, sprLoadGame, sprLoadGameHover);
+		public var sprites:Graphiclist = new Graphiclist(sprBanner, sprNewGame, sprNewGameHover, sprLoadGame, sprLoadGameHover, sprMCHNZD);
 		//variable that contains the entity that holds all the graphics
 		public var display:Entity;
 		
@@ -47,6 +48,7 @@ package Control
 			sprBanner.y = -128;
 			sprNewGame.y = sprNewGameHover.y = 200;
 			sprLoadGame.y = sprLoadGameHover.y = 264;
+			sprMCHNZD.y = 350;
 		}
 		
 		override public function update():void
