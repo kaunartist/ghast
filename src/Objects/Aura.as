@@ -15,13 +15,11 @@ package Objects
 
 		public function Aura(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null)
 		{
-//			sprite.add("pulse", [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 14, 13, 12, 11, 10, 9, 8], 0.3, true);
 			sprite.add("pulse", [ 0, 9, 10, 11, 12, 13, 14, 15, 6, 5, 4, 3, 2, 1], 0.3, true);
 			sprite.add("surge", [14, 15], 0.2, true);
 			sprite.play("pulse");
 			sprite.originX = 32;
 			sprite.originY = 32;
-			trace("Origin: " + sprite.originX + ", " + sprite.originY);
 			setHitbox(48, 48, -8, -6);
 			graphic = sprite;
 			super(x, y, graphic, mask);

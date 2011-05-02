@@ -8,7 +8,7 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/forest1.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
+		[Embed(source = '../assets/levels/obstacletest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
 //		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
 		
 		public static const LEVELS:Array = new Array(LEVEL1);
@@ -29,20 +29,20 @@ package
 		
 		//objects
 		[Embed(source = '../assets/graphics/crate.png')] public static const OBJECT_CRATE:Class;
+		[Embed(source = '../assets/graphics/bush.png')] public static const OBJECT_BUSH:Class;
+		[Embed(source = '../assets/graphics/rock.png')] public static const OBJECT_ROCK:Class;
 		[Embed(source = '../assets/graphics/door.png')] public static const OBJECT_DOOR:Class;
-		[Embed(source = '../assets/graphics/electricity.png')] public static const OBJECT_ELECTRICITY:Class;
-		[Embed(source = '../assets/graphics/moving.png')] public static const OBJECT_MOVING:Class;
-		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
 		[Embed(source = '../assets/graphics/particleauratrace.png')] public static const AURA:Class;
-//		[Embed(source = '../assets/graphics/aura_mask.png')] public static const AURA_MASK:Class;
 		[Embed(source = '../assets/graphics/ghast3.png')] public static const GHAST:Class;
 		
 		//sounds
 		[Embed(source = '../assets/audio/soundtrack.swf#soundtrack')] public static const SFX_SOUNDTRACK:Class;
-//		[Embed(source = '../assets/audio/walk.swf#walk')] public static const SFX_WALK:Class;
 		
 		//player
 		[Embed(source = '../assets/graphics/kvothe.png')] public static const PLAYER:Class;
+		[Embed(source = '../assets/graphics/crouchleftmask.png')] public static const CROUCH_LEFT_MASK:Class;
+		[Embed(source = '../assets/graphics/crouchrightmask.png')] public static const CROUCH_RIGHT_MASK:Class;
+		
 		
 	}
 

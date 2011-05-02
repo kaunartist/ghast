@@ -3,7 +3,6 @@ Assets (* = do first, others are extra)
     * Player
       x walk cycle
       - death animation (turn into ghast?)
-    - Player's father
     * Ghast spirit
       x move
       x hover
@@ -11,9 +10,6 @@ Assets (* = do first, others are extra)
       - banish
     - Ring energy level indicator
     - Timer logo (sun/moon moving?). Can just be a timer countdown as placeholder.
-    - Oasis
-      - pool of water
-      - unicorn in background
     - Arima's house
     - Environment elements
       - Falling leaves
@@ -37,15 +33,11 @@ Assets (* = do first, others are extra)
   Audio - do this when i'm too tired/drunk to code
     - Aura/spirit collision
     - Player movement
-      - Walk
       - Jump
-      - Crouch
     - Spirit movement (eg. ghast lunges, makes whooshing noise)
       * Ghast (prowl?)
     - Soundtrack
       x Main
-      - Oasis
-    - Waterfall
 
 Programming
 x Player controls
@@ -62,12 +54,14 @@ x Screen camera to follow player through map
   x Surge (press space to surge aura and banish spirits)
   - Recharge (stand under waterfall to recharge ring)
 - Spirit movement/AI
-  - All: flee, hunt
+  - All: 
+  	x flee
+  	- hunt
   * Ghast: wander, hunt player when noticed
   	- Line of sight detection
   	- Swooping attack along somewhat random path to avoid predictability
-- Dialog
 x Fix restart
+- Add Obstacle for level editor
 
 
 

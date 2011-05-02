@@ -33,7 +33,7 @@ package Control
 		override public function begin():void
 		{
 			//enable the console
-//			FP.console.enable();
+			FP.console.enable();
 			
 			//set the level to 0
 			Global.level = 0;
@@ -127,6 +127,12 @@ package Control
 			
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
+			
+			//add the rocks
+			if(str.search("<obstacles>") > 0) {
+			for each (o in xml.obstacles[0].rock) { add(new Rock(o.@x, o.@y, o.@width, o.@height)); }
+			for each (o in xml.obstacles[0].bush) { add(new Bush(o.@x, o.@y, o.@width, o.@height)); }
+			}
 			
 			//set the music
 			Global.soundtrack = new Sfx(Assets.SFX_SOUNDTRACK);

@@ -7,6 +7,7 @@ package Objects
 	import net.flashpunk.Sfx;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.masks.Pixelmask;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import Assets;
@@ -29,6 +30,9 @@ package Objects
 		
 		public var dead:Boolean = false;
 		public var start:Point;
+		
+		public var crouchLeftMask:Pixelmask, crouchRightMask:Pixelmask;
+		public var standMask:Pixelmask;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -59,6 +63,9 @@ package Objects
 			
 			//set hitbox & graphic
 			setHitbox(12, 24, -10, -8);
+			crouchLeftMask = new Pixelmask(Assets.CROUCH_LEFT_MASK);
+			crouchRightMask = new Pixelmask(Assets.CROUCH_RIGHT_MASK);
+			
 			graphic = sprite;
 			type = "Player";
 		}
@@ -144,10 +151,12 @@ package Objects
 			{
 				if (Input.check(Global.keyDown))
 				{
-					if (direction) { sprite.play("crouchRight"); } else { sprite.play("crouchLeft"); }
+					if (direction) { setHitbox(12, 16, -10, -16); sprite.play("crouchRight"); } 
+					else { setHitbox(12, 16, -8, -16); sprite.play("crouchLeft"); }
 				}
 				else
 				{
+					mask = null; setHitbox(12, 24, -10, -8);
 					if (speed.x < 0) { sprite.play("walkLeft"); }
 					if (speed.x > 0) { sprite.play("walkRight"); }
 					

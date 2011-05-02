@@ -22,11 +22,16 @@
 		</object>
 		<object name="door" image="door.png" width="32" height="32" />
 		<object name="player" image="player.png" width="32" height="32" />
+		<folder name="obstacles">
+			<object name="rock" image="rock.png" width="28" height="22" />
+			<object name="bush" image="bush.png" width="30" height="18" />
+		</folder>
 	</objects>
 	
 	<layers>
 		<grid name="floors" gridSize="32" exportAsObjects="true"/>
 		<objects name="spirits" gridSize="32"/>
+		<objects name="obstacles" gridSize="32"/>
 		<objects name="objects" gridSize="32"/>
 		<tiles name="tilesAbove" gridSize="32"/>	
 	</layers>

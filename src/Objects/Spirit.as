@@ -30,9 +30,11 @@ package Objects
 			
 			setHitbox(48, 48, 0, 0);
 			destination = new Point(FP.rand(FP.screen.width), FP.rand(FP.screen.height));
-			home = new Point(x, y);
+
 			graphic = sprite;
 			super(x, y, graphic, mask);
+
+			home = new Point(x, y);
 			
 			// set up state machine
 			state = new StateMachine();
@@ -57,10 +59,14 @@ package Objects
 				case "patrol":
 					
 					// look for player
+					if (look())
+					{
+						state.changeState("hunt");
+					}
 					
 					// move
-					if (FP.distance(x, y, home.x, home.y) > 150) { destination = home; }
-					else if (reached_destination()) { choose_destination(); }
+					if (FP.distance(x, y, home.x, home.y) > 150) { destination = home.clone(); }
+					if (reached_destination()) { choose_destination(); return; }
 					determine_direction();
 					if (direction) { x += 1; }
 					else { x -= 1; }
@@ -83,8 +89,6 @@ package Objects
 					}
 					break;
 				case "swoop":
-					// todo: if close enough to player location
-					// play animation to return to dot form
 					if ((sprite.currentAnim == "reform") && (sprite.complete))
 					{
 						state.changeState("rest");
@@ -93,15 +97,14 @@ package Objects
 				case "flee":
 					if (reached_destination())
 					{
-						trace("reached destination after fleeing.");
 						state.changeState("patrol");
 						return;
 					}
 					determine_direction();
-					if (direction) { x += 2 * FP.random; }
-					else { x -= 2 * FP.random; }
-					if (direction_y) { y += 2 * FP.random; }
-					else { y += -2 * FP.random; }
+					if (direction) { x += 1; }
+					else { x -= 1; }
+					if (direction_y) { y += 1; }
+					else { y -= 1; }
 					break;
 				case "banished":
 					if (sprite.alpha > 0) { sprite.alpha -= 0.1; }
@@ -113,14 +116,48 @@ package Objects
 		public function flee():void
 		{
 			state.changeState("flee");
-			sprite.play("flee");
-//			trace("Run!");
 		}
 		
 		public function banish():void
 		{
-			this.collidable = false;
 			state.changeState("banished");
+		}
+		
+		private function look():Boolean
+		{
+			var p:Entity = Global.player;
+			var c:Entity;
+			// if player is behind us, we won't be able to see him
+			if ((direction && (p.x < x)) || (!direction && (p.x > x))) { return false; }
+
+			var distance:Number = FP.distance(x, y, p.centerX, p.centerY);
+			
+			if (distance < 200)
+			{ // only do the checks if they're in vision range
+				c = FP.world.collideLine("Obstacle", centerX, centerY, p.centerX, p.centerY);
+				if (c)
+				{
+					trace("Collide with obstacle");
+					return false;
+					/*if (FP.distance(x, y, c.x, c.y) <= distance)
+					{ // there's an obstacle in the way, can't see him
+						return false;
+					}*/
+				}
+				c = FP.world.collideLine("Solid", centerX, centerY, p.centerX, p.centerY);
+				if (c)
+				{
+					trace("Collide with wall.");
+					return false;
+					/*if (FP.distance(x, y, c.x, c.y) <= distance)
+					{ // there's a solid in the way, can't see him
+						return false;
+					}*/
+				}
+				// nothing in the way, ghast can see the player
+				return true;
+			}
+			return false;
 		}
 		
 		private function determine_direction():void
@@ -133,7 +170,7 @@ package Objects
 		
 		private function reached_destination():Boolean
 		{
-			if (FP.distance(x, y, destination.x, destination.y) < 5)
+			if (FP.distance(x, y, destination.x, destination.y) < 2)
 			{
 				return true;
 			}
@@ -142,15 +179,14 @@ package Objects
 		
 		private function choose_destination():void
 		{
-			if (direction) { destination.x = x + FP.rand(30); }
-			else { destination.x = x - FP.rand(30); }
-			if (direction_y) { destination.y = y - FP.rand(10); }
-			else { destination.y = y + FP.rand(10); }
+			if (direction) { destination.x = x + 40 + FP.rand(40); }
+			else { destination.x = x - 40 - FP.rand(40); }
+			if (direction_y) { destination.y = y - 20 - FP.rand(20); }
+			else { destination.y = y + 20 + FP.rand(20); }
 		}
 		
 		private function onPatrol(event:StateMachineEvent):void
 		{
-//			trace("patrolling");
 			sprite.play("glide");
 		}
 		
@@ -174,27 +210,27 @@ package Objects
 		
 		private function onFlee(event:StateMachineEvent):void
 		{
-			trace("flee!");
 			// play flee sfx
+			
+//			sprite.play("flee");
 			// set destination away from player
 			direction = !direction;
 			if (direction)
 			{
 				destination.x = x + 100;
-				destination.y = y - 60;
+				destination.y = y - 80;
 			}
 			else
 			{
 				destination.x = x - 100;
-				destination.y = y - 60;
+				destination.y = y - 80;
 			}
 		}
 		
 		private function onBanished(event:StateMachineEvent):void
-		{
-			trace("banished");
+		{			
+			this.collidable = false;
 			// play banished sfx
-			// set inactive, fade
 		}
 	}
 }
