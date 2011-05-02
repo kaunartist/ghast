@@ -104,14 +104,14 @@ package Objects
 				}
 			}
 			
-			if ( Input.pressed(Global.keyA) && onground && (speed.x == 0))
+			/*if ( Input.pressed(Global.keyA) && onground && (speed.x == 0))
 			{
 				Global.aura.surge();
 			}
 			else if ( Input.released(Global.keyA) )
 			{
 				Global.aura.surge_end();
-			}
+			}*/
 			
 			if (!Input.check(Global.keyDown) && !Input.check(Global.keyA))
 			{ // only move if not crouching
