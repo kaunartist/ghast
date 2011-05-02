@@ -8,7 +8,7 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/obstacletest.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
+		[Embed(source = '../assets/levels/forest2.oel',  mimeType = "application/octet-stream")] public static const LEVEL1: Class;
 //		[Embed(source = '../assets/levels/Level2.oel',  mimeType = "application/octet-stream")] public static const LEVEL2: Class;
 		
 		public static const LEVELS:Array = new Array(LEVEL1);

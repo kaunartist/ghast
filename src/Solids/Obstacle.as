@@ -17,12 +17,9 @@ package Solids
 			this.width = 32;
 			this.height = 32;
 			
-			super(x, y, image);
-			
 			type = "Obstacle";
-			setHitbox(w, h);
-			//hide us - we don't need to ever be updated
-//			active = false; // this might mess up collision detection
+			setHitbox(width, height);
+			graphic = image;
 		}
 		
 	}

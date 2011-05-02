@@ -128,7 +128,7 @@ package Control
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
 			
-			//add the rocks
+			//add the obstacles
 			if(str.search("<obstacles>") > 0) {
 			for each (o in xml.obstacles[0].rock) { add(new Rock(o.@x, o.@y, o.@width, o.@height)); }
 			for each (o in xml.obstacles[0].bush) { add(new Bush(o.@x, o.@y, o.@width, o.@height)); }
