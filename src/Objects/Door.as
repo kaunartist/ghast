@@ -16,14 +16,14 @@ package Objects
 		
 		
 		public var sprite:Image = new Image(Assets.OBJECT_DOOR, new Rectangle(0, 0, 32, 64));
-		public var sprite_hover:Image = new Image(Assets.OBJECT_DOOR, new Rectangle(32, 0, 32, 64));
+//		public var sprite_hover:Image = new Image(Assets.OBJECT_DOOR, new Rectangle(32, 0, 32, 64));
 		
 		public function Door(x:int, y:int) 
 		{
-			super(x, y-32);
+			super(x, y);
 			
 			graphic = sprite;
-			setHitbox(32, 32, 0, -32);
+			setHitbox(32, 32, 0, 0);
 		}
 		
 		override public function update():void
@@ -33,16 +33,17 @@ package Objects
 			
 			//if we collide with the player...
 			if (collideWith(Global.player, x, y)) {
+//				trace("Collide with player");
 				//Note the use of collideWith (above). This is faster than using collde("type")
 				
 				//set the sprite to the hover one
-				graphic = sprite_hover;
-				
+//				graphic = sprite_hover;
+				Global.finished = true;
 				//if down is pressed, finish level
-				if (Input.pressed(Global.keyDown))
+				/*if (Input.pressed(Global.keyDown))
 				{
 					Global.finished = true;
-				}
+				}*/
 			}
 		}
 		

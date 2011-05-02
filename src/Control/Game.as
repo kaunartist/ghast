@@ -66,7 +66,8 @@ package Control
 			
 			//load next level on level completion
 			if (Global.finished) {
-				nextlevel();
+				Global.soundtrack.stop();
+				FP.world = new Transition(Game); //nextlevel();
 			}
 		}
 		
@@ -147,7 +148,6 @@ package Control
 		public function nextlevel():void
 		{
 			removeAll();
-			
 			if(Global.level < Assets.LEVELS.length) { Global.level ++; }
 			Global.finished = false;
 			
