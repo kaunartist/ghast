@@ -33,7 +33,7 @@ package Control
 		override public function begin():void
 		{
 			//enable the console
-			FP.console.enable();
+//			FP.console.enable();
 			
 			//set the level to 0
 			Global.level = 0;
@@ -57,7 +57,7 @@ package Control
 					restartlevel();
 					//set restart to false
 					Global.restart = false;
-					Global.energy = 100;
+					Global.energy = 20;
 					Global.health = 3;
 					//reset our timer
 					reset = 60;

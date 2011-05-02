@@ -19,7 +19,7 @@ package
 		public static var
 			time:int = 0,
 			deaths:int = 0,
-			energy:int = 100,
+			energy:int = 20,
 			health:int = 3,
 			level:int = 0,
 			
