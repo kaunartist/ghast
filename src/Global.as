@@ -6,6 +6,8 @@ package
 	import Objects.Player;
 	import Objects.Spirit;
 	
+	import flash.geom.Point;
+	
 	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Key;
 
@@ -39,6 +41,8 @@ package
 			aura:Aura,
 			spirits:Vector.<Spirit>,
 			view:View,
+			
+			feeding:Point,
 			
 			paused:Boolean = false,
 			restart:Boolean = false,

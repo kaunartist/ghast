@@ -68,8 +68,8 @@ package Objects
 					if (FP.distance(x, y, home.x, home.y) > 150) { destination = home.clone(); }
 					if (reached_destination()) { choose_destination(); return; }
 					determine_direction();
-					if (direction) { x += 1; }
-					else { x -= 1; }
+					if (direction) { sprite.flipped = true; x += 1; }
+					else { sprite.flipped = false; x -= 1; }
 					if (direction_y) { y += 1; }
 					else { y -= 1; }
 					break;
@@ -80,13 +80,15 @@ package Objects
 					}
 					break;
 				case "hunt":
-					if (Input.pressed(Key.SPACE))
+					if (look())
 					{
-						if (state.canChangeStateTo("return"))
-						{
-							state.changeState("return");
-						}
+						destination.x = Global.player.x; destination.y = Global.player.y;
 					}
+					determine_direction();
+					if (direction) { sprite.flipped = true; x += 2; }
+					else { sprite.flipped = false; x -= 2; }
+					if (direction_y) { y += 1; }
+					else { y -= 1; }
 					break;
 				case "swoop":
 					if ((sprite.currentAnim == "reform") && (sprite.complete))
@@ -101,8 +103,8 @@ package Objects
 						return;
 					}
 					determine_direction();
-					if (direction) { x += 1; }
-					else { x -= 1; }
+					if (direction) { sprite.flipped = true; x += 1; }
+					else { sprite.flipped = false; x -= 1; }
 					if (direction_y) { y += 1; }
 					else { y -= 1; }
 					break;
@@ -123,6 +125,15 @@ package Objects
 			state.changeState("banished");
 		}
 		
+		public function follow():void
+		{
+			if (state.canChangeStateTo("follow"))
+			{
+				trace("Following!");
+				state.changeState("follow");
+			}
+		}
+		
 		private function look():Boolean
 		{
 			var p:Entity = Global.player;
@@ -135,25 +146,9 @@ package Objects
 			if (distance < 200)
 			{ // only do the checks if they're in vision range
 				c = FP.world.collideLine("Obstacle", centerX, centerY, p.centerX, p.centerY);
-				if (c)
-				{
-					trace("Collide with obstacle");
-					return false;
-					/*if (FP.distance(x, y, c.x, c.y) <= distance)
-					{ // there's an obstacle in the way, can't see him
-						return false;
-					}*/
-				}
+				if (c) { return false; }
 				c = FP.world.collideLine("Solid", centerX, centerY, p.centerX, p.centerY);
-				if (c)
-				{
-					trace("Collide with wall.");
-					return false;
-					/*if (FP.distance(x, y, c.x, c.y) <= distance)
-					{ // there's a solid in the way, can't see him
-						return false;
-					}*/
-				}
+				if (c) { return false; }
 				// nothing in the way, ghast can see the player
 				return true;
 			}
@@ -198,8 +193,21 @@ package Objects
 		
 		private function onHunt(event:StateMachineEvent):void
 		{
-			trace("hunting");
 			// play the feeding cry sfx
+			Global.feeding = new Point(Global.player.x, Global.player.y);
+			// call other ghasts to here
+			var g:Spirit;
+			for each (g in Global.spirits)
+			{
+				if (this != g)
+				{
+					if (FP.distance(centerX, centerY, g.centerX, g.centerY) < 50)
+					{
+						g.follow();
+					}
+				}
+			}
+			destination = new Point(Global.player.x, Global.player.y);
 		}
 		
 		private function onSwoop(event:StateMachineEvent):void

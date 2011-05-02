@@ -58,10 +58,10 @@ x Screen camera to follow player through map
   	x flee
   	- hunt
   * Ghast: wander, hunt player when noticed
-  	- Line of sight detection
+  	x Line of sight detection
   	- Swooping attack along somewhat random path to avoid predictability
 x Fix restart
-- Add Obstacle for level editor
+x Add Obstacle for level editor
 
 
 
