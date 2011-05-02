@@ -16,7 +16,6 @@ package Objects
 	public class Player extends Physics
 	{
 		public var sprite:Spritemap = new Spritemap(Assets.PLAYER, 32, 32, animEnd);
-//		public var sfx_walk:Sfx = new Sfx(Assets.SFX_WALK);
 		
 		//how fast we accelerate
 		public var movement:Number = 1;
@@ -31,7 +30,6 @@ package Objects
 		public var dead:Boolean = false;
 		public var start:Point;
 		
-		public var crouchLeftMask:Pixelmask, crouchRightMask:Pixelmask;
 		public var standMask:Pixelmask;
 		
 		public function Player(x:int, y:int) 
@@ -63,8 +61,6 @@ package Objects
 			
 			//set hitbox & graphic
 			setHitbox(12, 24, -10, -8);
-			crouchLeftMask = new Pixelmask(Assets.CROUCH_LEFT_MASK);
-			crouchRightMask = new Pixelmask(Assets.CROUCH_RIGHT_MASK);
 			
 			graphic = sprite;
 			type = "Player";
@@ -92,26 +88,13 @@ package Objects
 			if ( Input.pressed(Global.keyUp) && !Input.check(Global.keyA)) 
 			{
 				var jumped:Boolean = false;
-				
-				//increase acceeration, if we're not going too fast
-//				if (Input.check(Global.keyLeft) && speed.x > -mMaxspeed.x) { acceleration.x = - movement; direction = false; }
-//				if (Input.check(Global.keyRight) && speed.x < mMaxspeed.x) { acceleration.x = movement; direction = true; }
-				
+
 				//normal jump
 				if (onground) { 
 					speed.y = -jump; 
 					jumped = true; 
 				}
 			}
-			
-			/*if ( Input.pressed(Global.keyA) && onground && (speed.x == 0))
-			{
-				Global.aura.surge();
-			}
-			else if ( Input.released(Global.keyA) )
-			{
-				Global.aura.surge_end();
-			}*/
 			
 			if (!Input.check(Global.keyDown) && !Input.check(Global.keyA))
 			{ // only move if not crouching
